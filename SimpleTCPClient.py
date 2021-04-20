@@ -4,7 +4,7 @@ A simple "echo" client written in Python.
 import sys, socket
 
 def usage():
-    print ("Usage:  python3 SimpleTCPClient <server IP> <port number> <message>")
+    print("Usage:  python3 SimpleTCPClient <server IP> <port number> <message>")
     sys.exit()
 
 def main():
@@ -20,13 +20,13 @@ def main():
 
     serverSock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     serverSock.connect((server, port))
-    print ("Connected to server; sending message")
+    print("Connected to server; sending message")
 
     serverSock.send(message.encode("ascii"))
-    print ("Sent message; waiting for reply")
+    print("Sent message; waiting for reply")
 
     returned = serverSock.recv(1024)
-    print ("Received reply: "+ returned.decode("ascii"))
+    print("Received reply:", returned.decode("ascii"))
 
     serverSock.close()
 

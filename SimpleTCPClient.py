@@ -18,16 +18,16 @@ def main():
     except ValueError as e:
         usage()
 
-    serverSock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    serverSock.connect((server, port))
+    clientSock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    clientSock.connect((server, port))
     print("Connected to server; sending message")
 
-    serverSock.send(message.encode("ascii"))
+    clientSock.send(message.encode("ascii"))
     print("Sent message; waiting for reply")
 
-    returned = serverSock.recv(1024)
+    returned = clientSock.recv(1024)
     print("Received reply:", returned.decode("ascii"))
 
-    serverSock.close()
+    clientSock.close()
 
 main()
